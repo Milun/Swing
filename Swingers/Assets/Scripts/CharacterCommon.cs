@@ -5,7 +5,9 @@ using System.Collections;
 public class CharacterCommon : MonoBehaviour
 {
 	public GameObject grapplePointPrefab;
+	public GameObject grappleRopePrefab;
 	private GameObject currentGrapplePoint = null;
+	private GameObject currentGrappleRope = null;
 
 	public int		m_jumpCount = 0;			// How many times you've jumped already.
 	public int		m_jumpMax = 2;				// Maximum amount of times you can jump.
@@ -17,6 +19,7 @@ public class CharacterCommon : MonoBehaviour
 	private int 	m_facing = 1;				// Can equal 1 or -1. 1 = Facing right.
 	private Vector3 m_aim = Vector3.zero;		// Where the character is aiming their grappling hook
 	private Vector3 m_grappleDirection;
+	private GameObject m_armPos;				// The position of the arms bone from where the rope stretches.
 
 	private float	m_wallTimer = 0.0f;
 	private bool	m_onWall = false;
@@ -28,6 +31,12 @@ public class CharacterCommon : MonoBehaviour
 	void Awake ()
 	{
 		charPhysics = GetComponent<CharacterPhysics>();
+	}
+
+	void Start ()
+	{
+		// Get a reference to the characters arm (this will need to be changed based on character).
+		m_armPos = transform.Find ("Armature/b_root/b_chest/b_chest_L/b_chest_upper_L/b_chest_lower_L/b_chest_hand_L/b_chest_hand_L_001").gameObject;
 	}
 	
 	// Update is called once per frame
@@ -93,6 +102,8 @@ public class CharacterCommon : MonoBehaviour
 
 		if(currentGrapplePoint != null)
 		{
+			UpdateGrappleRope();
+
 			if(currentGrapplePoint.GetComponent<GrappleLogic>().isSet)
 			{
 				//SWING ATTEMPT ONE
@@ -182,12 +193,20 @@ public class CharacterCommon : MonoBehaviour
 		m_aim = newAim;
 	}
 
+	/**
+	 * Shoots out the grapple hook.
+	 */
 	public void FireGrapple()
 	{
 		if(currentGrapplePoint == null)
 		{
+			// Create a new grapple.
 			currentGrapplePoint = Instantiate (grapplePointPrefab, transform.position,transform.rotation) as GameObject;
+			currentGrappleRope  =  Instantiate (grappleRopePrefab) as GameObject;
+
+			// Remove the old grapple.
 			Destroy(currentGrapplePoint,100);
+			Destroy(currentGrappleRope,100);
 
 			GrappleLogic grappleLogic = currentGrapplePoint.GetComponent<GrappleLogic>();
 
@@ -201,6 +220,32 @@ public class CharacterCommon : MonoBehaviour
 			}
 
 			grappleLogic.player = gameObject;
+		}
+	}
+
+	/**
+	 * Updates the ropes position if a grapple exists.
+	 **/
+	private void UpdateGrappleRope()
+	{
+		// Update the location of the rope.
+		if (currentGrappleRope != null)
+		{
+			LineRenderer lr = currentGrappleRope.GetComponent<LineRenderer>();
+
+			// Set the position on the players end.
+			if (m_armPos != null)
+			{
+				// NOTE! Thisll need to  be reworked. It seems inconsistent where it comes out of.
+				Vector3 temp = new Vector3(m_armPos.transform.position.x, m_armPos.transform.position.y + charPhysics.m_gravity, 0.0f);
+				lr.SetPosition(0, temp);
+			}
+
+			// Set the position on the grapples end (if it exists).
+			if (currentGrapplePoint != null)
+			{
+				lr.SetPosition(1, currentGrapplePoint.transform.position);
+			}
 		}
 	}
 

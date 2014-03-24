@@ -973,7 +973,7 @@ MonoBehaviour:
   m_gravityMax: 25
   m_isGrounded: 0
   m_wallNormal: {x: 0, y: 0, z: 0}
-  m_wallAnchor: 0
+  m_anchorWall: 0
   m_xSpeed: 0
   m_ySpeed: 0
 --- !u!114 &11400002
@@ -1010,6 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grapplePointPrefab: {fileID: 100000, guid: e8c23c18fe6fce24ba0e0d8f4803c17b, type: 2}
+  grappleRopePrefab: {fileID: 100000, guid: f27183f5fc99cf94fb112763b76c304c, type: 2}
   m_jumpCount: 0
   m_jumpMax: 20
   runAcc: 2.5
