@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CharacterCommon.cs">
+    <Files>
+      <File FileName="Assets\Scripts\CharacterAnimation.cs" Line="74" Column="1" />
+      <File FileName="Assets\Scripts\CharacterPhysics.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CharacterCommon.cs" Line="168" Column="30" />
+      <File FileName="Assets\Scripts\Character.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GrappleLogic.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Input_Keyboard.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
