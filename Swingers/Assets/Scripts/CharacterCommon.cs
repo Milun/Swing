@@ -20,7 +20,7 @@ public class CharacterCommon : MonoBehaviour
 
 	private float	m_wallTimer = 0.0f;
 	private bool	m_onWall = false;
-	private const float	m_wallLimit = 10.0f;
+	private const float	m_wallLimit = 2.0f;
 	
 	CharacterPhysics charPhysics;
 
@@ -54,7 +54,7 @@ public class CharacterCommon : MonoBehaviour
 			if (!m_onWall)
 			{
 				m_onWall = true;
-				m_wallTimer = 9.0f;
+				m_wallTimer = 1.0f;
 			}
 
 			m_wallTimer += Time.deltaTime;
@@ -76,9 +76,9 @@ public class CharacterCommon : MonoBehaviour
 
 			if (charPhysics.ySpeed < 0)
 			{
-				if (m_wallLimit / m_wallTimer >= 1)
+				if (m_wallTimer / m_wallLimit <= 1)
 				{
-					charPhysics.ySpeed *= (m_wallLimit / m_wallTimer);
+					charPhysics.ySpeed *= (m_wallTimer / m_wallLimit);
 				}
 				if (charPhysics.ySpeed > 0)
 				{
