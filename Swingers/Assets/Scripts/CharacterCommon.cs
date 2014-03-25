@@ -121,7 +121,7 @@ public class CharacterCommon : MonoBehaviour
 		if (!charPhysics.isGrounded && Mathf.Abs(charPhysics.wallNormal.x) >= 1.0f)
 		{
 			charPhysics.ySpeed = m_jumpHeight;
-			charPhysics.xSpeed = charPhysics.wallNormal.x*runSpeed*2.0f;
+			charPhysics.xSpeed = charPhysics.wallNormal.x*runSpeed*3.0f;
 
 			if (charPhysics.wallNormal.x > 0.0f)
 			{
@@ -156,6 +156,11 @@ public class CharacterCommon : MonoBehaviour
 	 */
 	public void Run(float speed)
 	{
+		if (Mathf.Abs(speed) < 0.05f)
+		{
+			return;
+		}
+
 		// Get the speed we're trying to reach.
 		float targetSpeed = speed*runSpeed;
 		float direction = 1.0f;

@@ -10,6 +10,8 @@ public class Input_Controller : MonoBehaviour
 	private GamePadState state;
 	private GamePadState prevState;
 
+	private bool m_aPressed = false;
+
 	Character character;
 
 	// Use this for initialization
@@ -38,7 +40,15 @@ public class Input_Controller : MonoBehaviour
 
 			if(state.Buttons.A == ButtonState.Pressed)
 			{
-				character.PressUp();
+				if (!m_aPressed)
+				{
+					character.PressUp();
+					m_aPressed = true;
+				}
+			}
+			else
+			{
+				m_aPressed = false;
 			}
 
 			if(state.Buttons.RightShoulder == ButtonState.Pressed)
