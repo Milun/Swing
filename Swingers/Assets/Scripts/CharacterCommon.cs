@@ -4,9 +4,6 @@ using System.Collections;
 [RequireComponent( typeof(CharacterPhysics))]
 public class CharacterCommon : MonoBehaviour
 {
-	//TEST
-	bool gitIgnoreWorks = true; //please GOD be true
-	//TEST
 	public GameObject grapplePointPrefab;
 	public GameObject grappleRopePrefab;
 	private GameObject currentGrapplePoint = null;
@@ -109,10 +106,10 @@ public class CharacterCommon : MonoBehaviour
 
 			if(currentGrapplePoint.GetComponent<GrappleLogic>().isSet)
 			{
-				//SWING ATTEMPT ONE
 				float distance = currentGrapplePoint.GetComponent<GrappleLogic>().ropeLength;
 				transform.position = (transform.position - currentGrapplePoint.transform.position).normalized * distance + currentGrapplePoint.transform.position;
-				//END SWING ATTEMPT ONE
+			
+				charPhysics.gravityMax = charPhysics.defaultGravityMax/2.0f;
 			}
 		}
 	}
@@ -258,6 +255,9 @@ public class CharacterCommon : MonoBehaviour
 		{
 			Destroy(currentGrapplePoint.gameObject);
 			currentGrapplePoint = null;
+
+			m_jumpCount = 0; //So we can jump again and do next grapple
+			charPhysics.gravityMax = charPhysics.defaultGravityMax;
 		}
 	}
 }

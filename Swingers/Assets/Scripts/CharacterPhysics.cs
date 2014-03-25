@@ -14,7 +14,8 @@ using System.Collections;
 public class CharacterPhysics : MonoBehaviour
 {
 	public float	m_gravity = 0.4f;			// Gets added every frame to y-speed when falling.
-	public float	m_gravityMax = 10.0f;		// A character will not exceed this speed when in free fall.
+	private static float	m_defaultGravityMax = 10.0f;
+	public float	m_gravityMax = m_defaultGravityMax;		// A character will not exceed this speed when in free fall.
 
 	public bool		m_isGrounded = false;		// Is true only when the character is on a surface they can run on.
 												// controller.isGrounded returns true regardless of surface. This overwrites this.
@@ -253,6 +254,27 @@ public class CharacterPhysics : MonoBehaviour
 		get
 		{
 			return m_wallNormal;
+		}
+	}
+
+	public float gravityMax
+	{
+		get
+		{
+			return m_gravityMax;
+		}
+
+		set
+		{
+			m_gravityMax = value;
+		}
+	}
+
+	public float defaultGravityMax
+	{
+		get
+		{
+			return m_defaultGravityMax;
 		}
 	}
 }

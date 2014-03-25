@@ -13,7 +13,7 @@ public class GrappleLogic : MonoBehaviour
 	// Use this for initialization
 	void Awake()
 	{
-		m_speed = 10.0f;
+		m_speed = 40.0f;
 	}
 	
 	// Update is called once per frame
