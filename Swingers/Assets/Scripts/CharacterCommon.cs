@@ -4,6 +4,9 @@ using System.Collections;
 [RequireComponent( typeof(CharacterPhysics))]
 public class CharacterCommon : MonoBehaviour
 {
+	//TEST
+	bool gitIgnoreWorks; //true hopefully
+	//TEST
 	public GameObject grapplePointPrefab;
 	public GameObject grappleRopePrefab;
 	private GameObject currentGrapplePoint = null;
