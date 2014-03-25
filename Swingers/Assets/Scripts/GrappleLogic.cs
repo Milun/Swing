@@ -29,7 +29,8 @@ public class GrappleLogic : MonoBehaviour
 			m_timeAlive += Time.deltaTime;
 			if(m_timeAlive >= m_life)
 			{
-				Destroy (gameObject);
+				//Release after a certain time
+				m_player.GetComponent<CharacterCommon>().ReleaseGrapple();
 			}
 		}
 	}

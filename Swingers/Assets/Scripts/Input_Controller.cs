@@ -10,12 +10,14 @@ public class Input_Controller : MonoBehaviour
 	private GamePadState state;
 	private GamePadState prevState;
 
+	public int m_playerNum;		//Which player this is
+
 	Character character;
 
 	// Use this for initialization
 	void Awake()
 	{
-		playerIndex = (PlayerIndex)0;
+		playerIndex = (PlayerIndex)(m_playerNum-1);
 
 		character = GetComponent<Character>();
 	}
