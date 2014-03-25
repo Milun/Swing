@@ -253,10 +253,16 @@ public class CharacterCommon : MonoBehaviour
 	{
 		if(currentGrapplePoint != null)
 		{
+			//If we were swinging, we can do another jump
+			if(currentGrapplePoint.GetComponent<GrappleLogic>().isSet)
+			{
+				m_jumpCount = 0; //So we can jump again and do next grapple
+			}
+
 			Destroy(currentGrapplePoint.gameObject);
+			Destroy (currentGrappleRope.gameObject);
 			currentGrapplePoint = null;
 
-			m_jumpCount = 0; //So we can jump again and do next grapple
 			charPhysics.gravityMax = charPhysics.defaultGravityMax;
 		}
 	}

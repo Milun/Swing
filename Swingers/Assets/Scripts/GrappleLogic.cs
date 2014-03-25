@@ -8,6 +8,9 @@ public class GrappleLogic : MonoBehaviour
 	private float m_ropeLength;
 	private GameObject m_player;
 
+	private float m_life = 200.0f;		//How long before we delete this
+	private float m_timeAlive = 0.0f;	//How long this grapple object has existed
+
 	private bool m_grapplePointSet = false;
 
 	// Use this for initialization
@@ -22,6 +25,12 @@ public class GrappleLogic : MonoBehaviour
 		if(!m_grapplePointSet)
 		{
 			transform.position += m_direction * m_speed * Time.deltaTime;
+
+			m_timeAlive += Time.deltaTime;
+			if(m_timeAlive >= m_life)
+			{
+				Destroy (gameObject);
+			}
 		}
 	}
 
