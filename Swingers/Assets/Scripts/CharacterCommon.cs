@@ -5,7 +5,7 @@ using System.Collections;
 public class CharacterCommon : MonoBehaviour
 {
 	//TEST
-	bool gitIgnoreWorks = false; //true hopefully
+	bool gitIgnoreWorks = true; //please GOD be true
 	//TEST
 	public GameObject grapplePointPrefab;
 	public GameObject grappleRopePrefab;
