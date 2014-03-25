@@ -12,14 +12,14 @@ public class CharacterAnimation : MonoBehaviour
 	private int facingCurr = 0;		// The current direction the character is facing.
 	private int facingDest = 0;		// The destination the character needs to turn to face.
 	private const int facingSpeed = 15;	// The speed the character turns in that direction.
-	
+
 	// Use this for initialization
 	void Awake ()
 	{
 		charCommon 	= GetComponent<CharacterCommon>();
 		charPhysics = GetComponent<CharacterPhysics>();
 	}
-	
+
 	/**
 	 * Returns a value from 0 - 1 which is the percentage of where the current animation is in being played.
 	 **/
@@ -91,7 +91,7 @@ public class CharacterAnimation : MonoBehaviour
 	void Update ()
 	{
 		Turn ();
-		
+
 		if (charPhysics.isGrounded)
 		{
 			AnimWalk();
