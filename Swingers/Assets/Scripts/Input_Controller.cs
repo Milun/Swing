@@ -10,11 +10,8 @@ public class Input_Controller : MonoBehaviour
 	private GamePadState state;
 	private GamePadState prevState;
 
-<<<<<<< HEAD
 	public int m_playerNum;		//Which player this is
-=======
 	private bool m_aPressed = false;
->>>>>>> 2fe3a640ca3f1930252a012f7ae05a57be770e13
 
 	Character character;
 
